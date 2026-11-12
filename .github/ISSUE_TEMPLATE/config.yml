@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/m-saad-siddique/video-exporter-personal-edition/discussions
+    about: Ask a question or discuss an idea with the community.
+  - name: Report a security vulnerability
+    url: https://github.com/m-saad-siddique/video-exporter-personal-edition/security/advisories/new
+    about: Report sensitive security issues privately.

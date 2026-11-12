@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a reproducible detection, download, transcript, or UI problem.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: e.g. 1.14.1
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: e.g. Chrome version and macOS/Windows/Linux version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Use a public or synthetic example when possible. Do not include private video links or authentication data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and error
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Optional reviewed diagnostics or screenshot
+      description: Remove any private identifiers, media URLs, tokens, cookies, or personal data before sharing.
