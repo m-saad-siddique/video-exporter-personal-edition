@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Video Exporter \u2014 Personal Edition",
+  "version": "1.14.1",
+  "description": "Personal video and transcript export tools for browser-accessible content you own or have permission to download.",
+  "action": {
+    "default_title": "Video Exporter \u2014 Personal Edition",
+    "default_popup": "src/popup/popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "storage",
+    "webRequest",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "vendor/mediabunny.min.mjs"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/content/page-hook.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/content/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+*.zip
+*.crx
+*.pem
+.DS_Store
+Thumbs.db
+node_modules/
+artifacts/
+dist/
+.env
+.env.*
+!.env.example
+.aws/
+*.key

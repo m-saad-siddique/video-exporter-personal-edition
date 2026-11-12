@@ -1,0 +1,10 @@
+{
+  "name": "mediabunny",
+  "version": "1.65.2",
+  "license": "MPL-2.0",
+  "bundle": "mediabunny.min.mjs",
+  "source": "https://github.com/Vanilagy/mediabunny/releases/tag/v1.65.2",
+  "download": "https://github.com/Vanilagy/mediabunny/releases/download/v1.65.2/mediabunny.min.mjs",
+  "sha256": "08149edcc8cf980da65d94a0a54a8fc0fa85a65f89b66f55c906f33618363919",
+  "upstream_fix": "https://github.com/Vanilagy/mediabunny/issues/614"
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Exporter — Personal Edition</title>
+  <link rel="stylesheet" href="./popup.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <img src="../../icons/icon32.png" width="30" height="30" alt="">
+      <div class="brand"><h1>Video Exporter <span class="edition">Personal</span><span class="version">1.14.1</span></h1><p id="lessonTitle">Finding videos on this page…</p></div>
+      <button id="refreshButton" class="icon-button" type="button" title="Refresh detected videos" aria-label="Refresh detected videos"><span class="icon icon-refresh" aria-hidden="true"></span></button>
+    </header>
+    <nav class="tabs" role="tablist" aria-label="Exporter tools">
+      <button id="videosTab" type="button" role="tab" aria-selected="true" aria-controls="videosPanel">Videos <span id="videoCount" class="count">0</span></button>
+      <button id="transcriptsTab" type="button" role="tab" aria-selected="false" aria-controls="transcriptsPanel" tabindex="-1">Transcripts</button>
+      <button id="settingsTab" class="settings-tab" type="button" role="tab" aria-selected="false" aria-controls="settingsPanel" tabindex="-1"><span class="icon icon-settings" aria-hidden="true"></span>Settings</button>
+    </nav>
+    <div class="workspace">
+      <section id="errorPanel" class="error-panel" role="alert" hidden>
+        <p id="errorSummary"></p>
+        <details><summary>Technical details</summary><pre id="errorBox"></pre></details>
+        <button id="downloadDiagnosticsButton" class="text-button" type="button" hidden>Save download error details</button>
+      </section>
+      <section id="videosPanel" role="tabpanel" aria-labelledby="videosTab">
+        <div class="list-heading"><span>ON THIS PAGE</span><span id="detectionStatus" class="live-label">Checking…</span></div>
+        <div id="videoList" class="video-list"></div>
+        <section id="historySection" class="history-section" hidden aria-label="Recent downloads">
+          <div class="list-heading"><span>RECENT DOWNLOADS <span id="historyCount"></span></span><button id="clearHistoryButton" class="text-button" type="button" title="Remove finished entries from this list. Saved files stay on disk.">Clear finished</button></div>
+          <div id="downloadHistory" class="history-list"></div>
+        </section>
+      </section>
+      <section id="transcriptsPanel" role="tabpanel" aria-labelledby="transcriptsTab" hidden>
+        <div class="panel-intro"><h2>Page transcript</h2><p><strong id="transcriptStatus">Checking</strong> <span id="transcriptMessage"></span></p></div>
+        <div class="transcript-toolbar">
+          <label class="sr-only" for="transcriptFormat">Export format</label><select id="transcriptFormat"><option value="txt">TXT · Plain text</option><option value="srt">SRT · Subtitles</option><option value="vtt">VTT · Web captions</option></select>
+          <button id="extractTranscriptButton" class="primary-action" type="button" disabled><span id="exportButtonLabel">Export TXT</span></button>
+          <button id="copyTranscriptButton" type="button" disabled>Copy</button>
+        </div>
+        <div class="preview-toolbar"><label class="sr-only" for="transcriptSearch">Search transcript</label><input id="transcriptSearch" type="search" placeholder="Search transcript…" disabled><button id="previewTranscriptButton" type="button" disabled>Load preview</button></div>
+        <p id="previewCount" class="helper">Preview the transcript before exporting.</p>
+        <div id="transcriptPreview" class="transcript-preview" tabindex="0" aria-label="Transcript segments" hidden></div>
+      </section>
+      <section id="settingsPanel" role="tabpanel" aria-labelledby="settingsTab" hidden>
+        <div class="panel-intro"><h2>Export preferences</h2><p>Saved automatically.</p></div>
+        <label class="setting-row" for="videoQuality"><span><strong>Default video quality</strong><small>Individual videos can override this.</small></span><select id="videoQuality"><option value="best">Best available</option><option value="1080">Up to 1080p</option><option value="720">Up to 720p</option><option value="360">Up to 360p</option></select></label>
+        <label class="setting-row"><span><strong>Transcript timestamps</strong><small>Include in TXT and copied text.</small></span><input id="includeTimestamps" type="checkbox"></label>
+        <label class="field-label" for="filenameFormat">Filename template<input id="filenameFormat" type="text" value="{title}-{date}.{ext}" spellcheck="false"><small>Use {title}, {date}, and {ext}.</small></label>
+        <details class="technical-details"><summary>Detection details</summary><p><strong id="videoStatus">Checking</strong></p><p id="videoMessage"></p></details>
+        <p class="helper">For content you own or have permission to download. Encrypted media is unsupported.</p>
+      </section>
+      <section id="progress" class="task-progress" hidden aria-live="polite"><div><span id="progressText"></span><strong id="progressPercent"></strong></div><div class="progress-bar"><span id="progressBar"></span></div></section>
+    </div>
+    <footer id="footerNote">Only videos detected on this page are listed.</footer>
+  </main>
+  <script src="./popup.js"></script>
+</body>
+</html>
