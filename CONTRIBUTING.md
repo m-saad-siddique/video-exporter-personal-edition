@@ -31,6 +31,6 @@ The ordinary regression suite has no external dependencies. Use synthetic fixtur
 
 Explain the user-visible problem, the resulting behavior, and how you validated it. Link an existing issue when relevant. Address review comments before merging.
 
-`main` is protected: pull requests need a passing **Regression tests** check, an up-to-date branch, resolved conversations, and one approving review. Administrators are included. Do not bypass those requirements or push directly to `main`.
+`main` is protected: pull requests need a passing **Regression tests** check, an up-to-date branch, resolved conversations, and linear history. Administrators are included. Do not bypass those requirements or push directly to `main`.
 
-If a pull request is authored by the only maintainer, a separate eligible reviewer is still required under the current rules. A maintainer may deliberately revise repository policy; contributors should not work around it.
+The repository uses a solo-maintainer policy: an external approving review is not mandatory, but all pull requests must pass the required checks before merging. Force pushes and branch deletion on `main` are blocked. Reviews are still welcome for substantive changes.
